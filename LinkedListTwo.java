@@ -4,12 +4,16 @@ class ReverseLL
     // head of the modified linked list.
     Node reverseList(Node head)
     {
-        if(head.next==null){
-            return head;
+        Node current = head;
+        Node prev = null;
+        
+        while(current!=null){
+            head = current.next;
+            current.next = prev;
+            prev = current;
+            current = head;
         }
-        Node newNode=reverseList(head.next);
-        head.next.next=head;
-        head.next=null;
-        return newNode;
+        return prev;
     }
 }
+
